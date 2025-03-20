@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+
+    <style>
+        table, th, td { border: 1px solid black; border-collapse: collapse; padding: 8px; }
+    </style>
+    <link rel="stylesheet" href="/css/admin.css">
+
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <a href="/logout">Logout</a>
+
+    <h2>Add Coupon</h2>
+    <form action="/admin/add-coupon" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <input type="text" name="code" placeholder="Coupon Code" required>
+        <input type="date" name="expiryDate">
+        <button type="submit">Add Coupon</button>
+    </form>
+
+    <h2>All Coupons</h2>
+    <table>
+        <tr>
+            <th>Code</th>
+            <th>Status</th>
+            <th>Expiry</th>
+            <th>Actions</th>
+        </tr>
+        <% coupons.forEach(coupon => { %>
+            <tr>
+                <td><%= coupon.code %></td>
+                <td><%= coupon.isClaimed ? "Claimed" : "Available" %></td>
+                <td><%= coupon.expiryDate ? coupon.expiryDate.toDateString() : "No Expiry" %></td>
+                <td>
+                    <form action="/admin/toggle-coupon/<%= coupon._id %>" method="POST">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button type="submit"><%= coupon.isClaimed ? "Enable" : "Disable" %></button>
+                    </form>
+                    <form action="/admin/delete-coupon/<%= coupon._id %>" method="POST">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button type="submit" style="color: red;">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        <% }); %>
+    </table>
+
+    <h2>All Users</h2>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+        </tr>
+        <% users.forEach(user => { %>
+            <tr>
+                <td><%= user.username %></td>
+                <td><%= user.email %></td>
+                <td><%= user.role %></td>
+            </tr>
+        <% }); %>
+    </table>
+</body>
+</html>

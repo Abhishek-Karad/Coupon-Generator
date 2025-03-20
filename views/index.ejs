@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coupoun-Board</title>
+    <link rel="stylesheet" href="/css/index.css">
+
+</head>
+<body>
+    <h2>Welcome to Coupoun Dashboard</h2>
+    <a href="/admin/login">Admin-Access</a>
+
+
+    <h1>Claim Your Coupon</h1>
+    <form action="/claim-coupon" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <button type="submit">Get Coupon</button>
+    </form>
+
+    <% if (coupon) { %>
+        <div class="coupon">Your Coupon Code: <%= coupon %></div>
+    <% } %>
+
+    <% if (message) { %>
+        <div class="message"><%= message %></div>
+    <% } %>
+    
+</body>
+</html>

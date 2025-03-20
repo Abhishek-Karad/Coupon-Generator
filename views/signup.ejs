@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Login-Page</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <h2>Sign-up Page</h2>
+    <form action="/admin/signup" method="post">
+        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+        <label for="name" id="name">Enter E-mail ID</label>
+        <input type="text" id="name_id" name="email">
+        <label for="name" id="name">Enter Password</label>
+        <input type="password" id="password" name="password">
+        <button>Login</button>
+
+    </form>
+</body>
+</html>
