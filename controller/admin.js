@@ -1,4 +1,4 @@
-const bcrypt=require('bcrypt')
+const bcrypt = require('bcryptjs');
 const User=require('../model/user');
 const Coupon = require('../model/coupoun');
 exports.getadminside=(req,res,next)=>{
