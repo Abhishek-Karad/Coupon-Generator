@@ -81,12 +81,16 @@ exports.postlogin = (req, res) => {
         });
 };
 
-exports.postlogout=(req,res)=>{
-    exports.adminLogout = (req, res) => {
-        res.clearCookie("adminToken"); // ✅ Clear authentication token
-        res.redirect("/admin/login"); // ✅ Redirect to login page
-      };
-    }
+  exports.postlogout = (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            console.log("Error logging out:", err);
+            return res.redirect("/admin/admin");
+        }
+        res.clearCookie("connect.sid"); // Clear session cookie
+        res.redirect("/admin/login"); // Redirect to login page
+    });
+}
 exports.getAdminDashboard = (req, res) => {
  Promise.all([
    Coupon.find(),  // Fetch all coupons

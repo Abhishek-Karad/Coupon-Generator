@@ -6,6 +6,7 @@ body {
     background-color: #f4f4f4;
 }
 
+/* Headings */
 h1, h2 {
     text-align: center;
     color: #333;
@@ -52,10 +53,33 @@ button {
     color: white;
     border: none;
     cursor: pointer;
+    transition: background 0.3s ease;
 }
 
 button:hover {
     background-color: #218838;
+}
+
+/* Logout Button Styling */
+.logout-container {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.logout-container button {
+    background-color: red;
+    color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.logout-container button:hover {
+    background-color: darkred;
 }
 
 /* Table Styling */
@@ -86,11 +110,12 @@ td form {
     display: inline-block;
 }
 
-button[style="color: red;"] {
+/* Red Delete Button */
+button.delete-btn {
     background-color: #dc3545;
 }
 
-button[style="color: red;"]:hover {
+button.delete-btn:hover {
     background-color: #c82333;
 }
 
@@ -106,5 +131,15 @@ button[style="color: red;"]:hover {
     
     input, button {
         width: 100%;
+    }
+
+    .logout-container {
+        top: 10px;
+        right: 10px;
+    }
+
+    .logout-container button {
+        font-size: 12px;
+        padding: 6px 10px;
     }
 }

@@ -12,6 +12,7 @@ router.post('/signup',adminController.postsignup);
 router.post('/login',adminController.postlogin);
 
 router.get('/admin',adminController.getAdminDashboard);
+
 router.post('/logout',adminController.postlogout);
 
 
